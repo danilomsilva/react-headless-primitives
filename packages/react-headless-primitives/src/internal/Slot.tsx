@@ -1,20 +1,7 @@
 import * as React from "react";
+import { mergeRefs } from "./mergeRefs";
 
 type AnyProps = Record<string, unknown>;
-
-function mergeRefs<T>(
-  ...refs: Array<React.Ref<T> | undefined>
-): React.RefCallback<T> {
-  return (node) => {
-    for (const ref of refs) {
-      if (typeof ref === "function") {
-        ref(node);
-      } else if (ref !== null && ref !== undefined) {
-        (ref as React.RefObject<T | null>).current = node;
-      }
-    }
-  };
-}
 
 function mergeProps(slotProps: AnyProps, childProps: AnyProps): AnyProps {
   const merged: AnyProps = { ...slotProps, ...childProps };
