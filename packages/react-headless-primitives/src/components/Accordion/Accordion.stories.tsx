@@ -61,6 +61,7 @@ function BasicItems({ id = "" }: { id?: string }) {
 
 const meta: Meta<typeof Accordion.Root> = {
   title: "Components/Accordion",
+  component: Accordion.Root,
   decorators: [
     (Story) => (
       <>
