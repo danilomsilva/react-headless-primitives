@@ -24,3 +24,12 @@ export type {
   ToastViewportProps,
   ToastRootProps,
 } from "./components/Toast/Toast";
+
+export { Tabs } from "./components/Tabs/Tabs";
+export type {
+  TabsOrientation,
+  TabsRootProps,
+  TabsListProps,
+  TabsTriggerProps,
+  TabsContentProps,
+} from "./components/Tabs/Tabs";
