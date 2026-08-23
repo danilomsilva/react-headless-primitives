@@ -30,4 +30,14 @@ export default tseslint.config(
       },
     },
   },
+  {
+    // Module-augmentation declaration files legitimately declare
+    // empty interfaces with unused type params (matches how
+    // @testing-library/jest-dom types its own Vitest augmentation).
+    files: ["**/*.d.ts"],
+    rules: {
+      "@typescript-eslint/no-empty-object-type": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+    },
+  },
 );

@@ -2,7 +2,13 @@ import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 
 export default defineConfig({
-  plugins: [dts({ include: ["src"], rollupTypes: false })],
+  plugins: [
+    dts({
+      include: ["src"],
+      exclude: ["src/**/*.test.ts", "src/**/*.test.tsx"],
+      rollupTypes: false,
+    }),
+  ],
   build: {
     lib: {
       entry: {
