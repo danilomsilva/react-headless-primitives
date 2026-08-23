@@ -1,0 +1,12 @@
+{
+  "name": "react-headless-primitives-workspace",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}
