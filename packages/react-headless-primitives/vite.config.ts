@@ -18,6 +18,12 @@ export default defineConfig({
     lib: {
       entry: {
         index: "src/index.ts",
+        button: "src/components/Button/Button.tsx",
+        dialog: "src/components/Dialog/Dialog.tsx",
+        toast: "src/components/Toast/Toast.tsx",
+        tabs: "src/components/Tabs/Tabs.tsx",
+        accordion: "src/components/Accordion/Accordion.tsx",
+        combobox: "src/components/Combobox/Combobox.tsx",
       },
       formats: ["es", "cjs"],
       fileName: (format, entryName) =>

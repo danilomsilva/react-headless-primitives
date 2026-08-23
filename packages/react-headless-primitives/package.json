@@ -11,6 +11,36 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./button": {
+      "types": "./dist/components/Button/Button.d.ts",
+      "import": "./dist/button.js",
+      "require": "./dist/button.cjs"
+    },
+    "./dialog": {
+      "types": "./dist/components/Dialog/Dialog.d.ts",
+      "import": "./dist/dialog.js",
+      "require": "./dist/dialog.cjs"
+    },
+    "./toast": {
+      "types": "./dist/components/Toast/Toast.d.ts",
+      "import": "./dist/toast.js",
+      "require": "./dist/toast.cjs"
+    },
+    "./tabs": {
+      "types": "./dist/components/Tabs/Tabs.d.ts",
+      "import": "./dist/tabs.js",
+      "require": "./dist/tabs.cjs"
+    },
+    "./accordion": {
+      "types": "./dist/components/Accordion/Accordion.d.ts",
+      "import": "./dist/accordion.js",
+      "require": "./dist/accordion.cjs"
+    },
+    "./combobox": {
+      "types": "./dist/components/Combobox/Combobox.d.ts",
+      "import": "./dist/combobox.js",
+      "require": "./dist/combobox.cjs"
     }
   },
   "files": [
