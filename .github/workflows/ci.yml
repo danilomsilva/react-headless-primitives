@@ -21,6 +21,12 @@ jobs:
 
       - run: npx playwright install --with-deps chromium
 
+      - name: Build library
+        # apps/demo imports the published entry point (dist/*), so the
+        # library must be built before anything that resolves it —
+        # typecheck included — can run.
+        run: npm run build -w packages/react-headless-primitives
+
       - name: Typecheck
         run: npm run typecheck
 
