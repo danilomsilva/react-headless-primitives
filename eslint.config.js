@@ -31,6 +31,14 @@ export default tseslint.config(
         ...globals.es2022,
       },
     },
+    rules: {
+      // Leading underscore is the project convention for an intentionally
+      // unused binding (e.g. destructuring a prop only to discard it).
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
+    },
   },
   {
     // Module-augmentation declaration files legitimately declare
