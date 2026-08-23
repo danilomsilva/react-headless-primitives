@@ -16,3 +16,11 @@ export type {
   DialogDescriptionProps,
   DialogCloseProps,
 } from "./components/Dialog/Dialog";
+
+export { Toast, useToast } from "./components/Toast/Toast";
+export type {
+  ToastData,
+  ToastProviderProps,
+  ToastViewportProps,
+  ToastRootProps,
+} from "./components/Toast/Toast";
