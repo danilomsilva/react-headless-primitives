@@ -36,6 +36,7 @@ const demoStyles = `
 
 const meta: Meta<typeof Dialog.Root> = {
   title: "Components/Dialog",
+  component: Dialog.Root,
   decorators: [
     (Story) => (
       <>

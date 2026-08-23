@@ -89,6 +89,7 @@ function NotifyButton({
 
 const meta: Meta<typeof Toast.Provider> = {
   title: "Components/Toast",
+  component: Toast.Provider,
   decorators: [
     (Story) => (
       <>

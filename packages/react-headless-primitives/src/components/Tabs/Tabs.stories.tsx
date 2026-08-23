@@ -22,6 +22,7 @@ const demoStyles = `
 
 const meta: Meta<typeof Tabs.Root> = {
   title: "Components/Tabs",
+  component: Tabs.Root,
   decorators: [
     (Story) => (
       <>

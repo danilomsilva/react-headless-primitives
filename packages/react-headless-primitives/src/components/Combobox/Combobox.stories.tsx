@@ -75,6 +75,7 @@ function LanguageOptions() {
 
 const meta: Meta<typeof Combobox.Root<Language>> = {
   title: "Components/Combobox",
+  component: Combobox.Root,
   decorators: [
     (Story) => (
       <>
