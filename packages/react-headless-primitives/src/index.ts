@@ -33,3 +33,14 @@ export type {
   TabsTriggerProps,
   TabsContentProps,
 } from "./components/Tabs/Tabs";
+
+export { Accordion } from "./components/Accordion/Accordion";
+export type {
+  AccordionSingleProps,
+  AccordionMultipleProps,
+  AccordionRootProps,
+  AccordionItemProps,
+  AccordionHeaderProps,
+  AccordionTriggerProps,
+  AccordionContentProps,
+} from "./components/Accordion/Accordion";
