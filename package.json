@@ -12,9 +12,13 @@
   },
   "scripts": {
     "prepare": "husky",
+    "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test": "npm run test --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "build-storybook": "npm run build-storybook --workspaces --if-present"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
