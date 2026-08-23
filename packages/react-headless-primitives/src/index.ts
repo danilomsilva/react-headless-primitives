@@ -44,3 +44,12 @@ export type {
   AccordionTriggerProps,
   AccordionContentProps,
 } from "./components/Accordion/Accordion";
+
+export { Combobox, useCombobox } from "./components/Combobox/Combobox";
+export type {
+  ComboboxRootProps,
+  ComboboxTriggerProps,
+  ComboboxInputProps,
+  ComboboxContentProps,
+  ComboboxItemProps,
+} from "./components/Combobox/Combobox";
