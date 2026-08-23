@@ -7,6 +7,7 @@ This is a new, currently-empty repo (`danilomsilva/react-headless-primitives` on
 Revised per feedback: instead of one giant commit per milestone (tooling all at once, then components all at once), the build proceeds the way a person actually builds a project — each piece committed as soon as it's working, tooling added just-in-time for what the next piece needs rather than front-loaded. The milestones below are still the useful checkpoints, but each is a sequence of small, individually-committed steps. Commits are authored normally — no AI co-author trailer. The plan itself is checked into the repo at `docs/plan.md` as the first commit, the way a person would jot down the plan before writing code.
 
 Confirmed with the user:
+
 - **Layout**: npm workspaces monorepo — `packages/react-headless-primitives` (the lib) + `apps/demo` (Tailwind consumer app that installs the lib like a real external consumer).
 - **Package manager**: npm (already installed, no extra setup).
 - **Publish intent**: portfolio-only — `package.json` exports configured correctly "as if publishable," but no npm publish automation/Changesets.
@@ -39,18 +40,18 @@ react-headless-primitives/
 
 ## Stack
 
-| Area | Choice |
-|---|---|
-| React | 19, peerDependency `>=18` |
-| TypeScript | 5.x strict + `noUncheckedIndexedAccess` |
-| Bundler | Vite lib mode |
-| Storybook | latest 9.x, `.storybook` inside the lib package, stories colocated with components |
-| Tests | Vitest + React Testing Library + `vitest-axe` |
-| Interaction tests | Storybook play functions, executed headlessly in CI via `@storybook/test-runner` |
-| Lint | ESLint flat config: typescript-eslint, `eslint-plugin-jsx-a11y`, `eslint-plugin-react-hooks`, `eslint-plugin-storybook`, `eslint-config-prettier` |
-| Format | Prettier |
-| Pre-commit | husky + lint-staged |
-| Deploy | GitHub Actions → GitHub Pages, on push to `main`, after all checks pass |
+| Area              | Choice                                                                                                                                            |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| React             | 19, peerDependency `>=18`                                                                                                                         |
+| TypeScript        | 5.x strict + `noUncheckedIndexedAccess`                                                                                                           |
+| Bundler           | Vite lib mode                                                                                                                                     |
+| Storybook         | latest 9.x, `.storybook` inside the lib package, stories colocated with components                                                                |
+| Tests             | Vitest + React Testing Library + `vitest-axe`                                                                                                     |
+| Interaction tests | Storybook play functions, executed headlessly in CI via `@storybook/test-runner`                                                                  |
+| Lint              | ESLint flat config: typescript-eslint, `eslint-plugin-jsx-a11y`, `eslint-plugin-react-hooks`, `eslint-plugin-storybook`, `eslint-config-prettier` |
+| Format            | Prettier                                                                                                                                          |
+| Pre-commit        | husky + lint-staged                                                                                                                               |
+| Deploy            | GitHub Actions → GitHub Pages, on push to `main`, after all checks pass                                                                           |
 
 ## Architecture decisions
 
@@ -62,23 +63,25 @@ react-headless-primitives/
 
 ## Component specs
 
-| Component | API shape | ARIA pattern | Controlled/uncontrolled |
-|---|---|---|---|
-| Button | single component | button | — |
-| Dialog | `Root/Trigger/Portal/Overlay/Content/Title/Description/Close` | Dialog (Modal): focus trap, ESC, scroll lock | `open`/`defaultOpen`/`onOpenChange` |
-| Toast | `Provider/Viewport/Root` + `useToast()` imperative hook | `aria-live` region, internal queue | `toasts`/`onToastsChange` (Provider) vs internal queue via the hook |
-| Tabs | `Root/List/Trigger/Content` | Tabs: roving tabindex, arrow/Home/End | `value`/`defaultValue`/`onValueChange` |
-| Accordion | `Root/Item/Header/Trigger/Content` | Accordion (button+region) | `type: "single"|"multiple"`, `value`/`defaultValue`/`onValueChange`, `collapsible` |
-| Combobox\<T\> | `Root<T>/Trigger/Input/Content/Item` | Combobox 1.2 (listbox popup, `aria-activedescendant`) | `value`/`defaultValue`/`onValueChange`; async via `loadOptions(query): Promise<T[]>`, loading/error exposed through context |
+| Component     | API shape                                                     | ARIA pattern                                          | Controlled/uncontrolled                                                                                                     |
+| ------------- | ------------------------------------------------------------- | ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Button        | single component                                              | button                                                | —                                                                                                                           |
+| Dialog        | `Root/Trigger/Portal/Overlay/Content/Title/Description/Close` | Dialog (Modal): focus trap, ESC, scroll lock          | `open`/`defaultOpen`/`onOpenChange`                                                                                         |
+| Toast         | `Provider/Viewport/Root` + `useToast()` imperative hook       | `aria-live` region, internal queue                    | `toasts`/`onToastsChange` (Provider) vs internal queue via the hook                                                         |
+| Tabs          | `Root/List/Trigger/Content`                                   | Tabs: roving tabindex, arrow/Home/End                 | `value`/`defaultValue`/`onValueChange`                                                                                      |
+| Accordion     | `Root/Item/Header/Trigger/Content`                            | Accordion (button+region)                             | `type: "single"                                                                                                             | "multiple"`, `value`/`defaultValue`/`onValueChange`, `collapsible` |
+| Combobox\<T\> | `Root<T>/Trigger/Input/Content/Item`                          | Combobox 1.2 (listbox popup, `aria-activedescendant`) | `value`/`defaultValue`/`onValueChange`; async via `loadOptions(query): Promise<T[]>`, loading/error exposed through context |
 
 Every component (except Button, per above) ships: the component, a `.test.tsx` (behavior + `vitest-axe` assertions), and a `.stories.tsx` with Default / Variants / Keyboard-interaction (play function) / Accessibility stories — built together as one unit, one commit, not split across separate "write code" / "write tests" / "write stories" passes.
 
 ## Build sequence (small, individually-committed steps)
 
 **Step 0 — plan on record**
+
 - `docs: add project plan` — `docs/plan.md`.
 
 **Milestone 1 — foundation, added just-in-time**
+
 1. `chore: initialize npm workspaces` — root `package.json`, `.gitignore`, `.nvmrc`, README stub.
 2. `chore: scaffold library package` — `packages/react-headless-primitives`, strict `tsconfig`, Vite lib config, empty `src/index.ts` that builds.
 3. `chore: configure ESLint + Prettier` — get lint/format passing on the (small) codebase so far.
@@ -88,22 +91,26 @@ Every component (except Button, per above) ships: the component, a `.test.tsx` (
 7. `ci: add GitHub Actions workflow` — typecheck → lint → test → build → storybook build, sequential.
 
 **Milestone 2 — first 3 components, one at a time**
+
 1. `feat: add Button component` — including the `Slot`/`composeEventHandlers` utilities it needs, plus test + story, in one commit.
 2. `feat: add Dialog component` — including `useControllableState`, `useId`, `Portal`, `useFocusTrap`, `useEscapeKey`, plus test + story.
 3. `feat: add Toast component` — `Provider/Viewport/Root` + `useToast()` hook, live-region helper, plus test + story.
 
 **Milestone 3 — compound components, one at a time**
+
 1. `feat: add Tabs component`, plus test + story.
 2. `feat: add Accordion component` (reusing shared patterns from Tabs where they fit), plus test + story.
 3. `feat: add Combobox<T> component` with async option loading, plus test + story.
 
 **Milestone 4 — polish, demo, deploy**
+
 1. `feat: enable Storybook autodocs + a11y addon`; backfill any component missing a Keyboard/Accessibility story.
 2. `ci: run test-storybook (play functions) in CI`.
 3. `feat: scaffold apps/demo` — Vite + Tailwind, consuming the workspace package like an external consumer.
 4. `ci: deploy Storybook to GitHub Pages` on push to `main`, gated on green checks.
 
 **Milestone 5 — README + publishable polish**
+
 1. `docs: write README` — what this repo isolates, live Storybook link, install snippet, architecture rationale, keyboard tables.
 2. `chore: finalize package.json exports` — per-component subpath exports, main/module/types.
 3. `chore: set GitHub repo topics and description` via `gh repo edit`.
