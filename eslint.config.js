@@ -2,6 +2,7 @@ import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import reactHooks from "eslint-plugin-react-hooks";
 import jsxA11y from "eslint-plugin-jsx-a11y";
+import storybook from "eslint-plugin-storybook";
 import prettierConfig from "eslint-config-prettier";
 import globals from "globals";
 
@@ -21,6 +22,7 @@ export default tseslint.config(
     rules: reactHooks.configs["recommended-latest"].rules,
   },
   jsxA11y.flatConfigs.recommended,
+  ...storybook.configs["flat/recommended"],
   prettierConfig,
   {
     languageOptions: {

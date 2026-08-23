@@ -5,7 +5,12 @@ export default defineConfig({
   plugins: [
     dts({
       include: ["src"],
-      exclude: ["src/**/*.test.ts", "src/**/*.test.tsx"],
+      exclude: [
+        "src/**/*.test.ts",
+        "src/**/*.test.tsx",
+        "src/**/*.stories.ts",
+        "src/**/*.stories.tsx",
+      ],
       rollupTypes: false,
     }),
   ],
