@@ -4,6 +4,11 @@ A from-scratch headless React component library — the skill this repo isolates
 
 **[Storybook →](https://danilomsilva.github.io/react-headless-primitives/)**
 
+[![CI](https://github.com/danilomsilva/react-headless-primitives/actions/workflows/ci.yml/badge.svg)](https://github.com/danilomsilva/react-headless-primitives/actions/workflows/ci.yml)
+[![Storybook](https://img.shields.io/badge/Storybook-live-ff4785?logo=storybook&logoColor=white)](https://danilomsilva.github.io/react-headless-primitives/)
+![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)
+![Tests](https://img.shields.io/badge/tests-88%20passing-brightgreen)
+
 ## Install
 
 ```sh
